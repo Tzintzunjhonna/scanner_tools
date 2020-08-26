@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Igresar - ScannerTools</title>
+	<link rel="shortcut icon" href="../static/img/icono.ico" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+</head>
+<body class="">
+	
+	<nav class="navbar navbar-expand navbar-light bg-dark topbar mb-4 static-top shadow justify-content-center">
+						
+		<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+			<i class="fa fa-bars"></i>
+		</button>
+
+		<div class="sidebar-brand-icon rotate-n-15 ">
+			<i><img src="../static/img/icono.ico" height="50"></i>
+		</div>
+		<div class="sidebar-brand-text text-white mx-3">
+			Scanner Tools
+		</div>			
+						
+
+	</nav>
+
+	<div class="row justify-content-center">
+		<div class="card shadow w-25 p-3">
+			{% block content %}
+				<div class=" py-3 text-center">
+					<h6 class="md font-weight-bold text-dark">REGISTRO</h6>
+					<hr class="sidebar-divider">
+				</div>
+				<form action="/envio_registro" method="POST">
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text">
+					    	<i class="icon ion-md-person"></i>
+						</span>
+					  </div>
+					  <input required name="nombre" type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text">
+					    	<i class="icon ion-md-person"></i>
+					    </span>
+					  </div>
+					  <input required name="apellido" type="text" class="form-control" placeholder="Apellido" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text">
+					    	<i class="icon ion-md-mail"></i>
+					    </span>
+					  </div>
+					  <input required name="correo" type="email" class="form-control" placeholder="Correo" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text">
+					    	<i class="icon ion-md-key"></i>
+					    </span>
+					  </div>
+					  <input required name="contraseña" type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+					
+					<div class="float-right">
+					 	<button type="submit" class="btn btn-success">Registrar</button>
+					</div>
+					
+					<div class="input-group mb-3">
+						<a  href="{{url_for('autenticacion')}}">Ya tengo una cuenta &rarr;</a>
+					</div>
+					{% with messages = get_flashed_messages() %}
+					{% if messages %}
+					{% for message in messages %}
+						<div class="alert alert-success" role="alert">	
+							{{ message }} 
+						</div>	
+					{% endfor %}
+					{% endif %}
+					{% endwith %}
+				</form>
+
+				
+			{% endblock %}		
+		</div>
+	</div>
+
+		
+</body>
+</html>

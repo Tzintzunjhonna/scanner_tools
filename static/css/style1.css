@@ -1,0 +1,52 @@
+:root{
+	--primary: #5a5c69;
+	--light: #fff;
+	--grey: #efefef;
+}
+
+body{
+	overflow: hidden;
+	font-family: 'Muli', sans-serif;
+	font-weight: 300;
+	color: var(--primary);
+}
+
+.bg-primary{
+	background-color: var(--primary) !important;
+}
+.bg-light {
+	background-color: var(--light) !important;
+}
+
+#sidebar-conteiner{
+	min-height: 100vh;
+}
+
+#sidebar-conteiner .logo{
+	padding:  .875rem 1.25rem;
+}
+
+#sidebar-conteiner .menu{
+	width: 18rem;
+}
+
+.btn-search{
+	right: 10px;
+}
+
+.avatar{
+	width: 35px;
+}
+.avatar1{
+	width: 35%;
+}
+
+.conteinerlj{
+	padding-left: 0 !important;
+  	padding-right: 0 !important;
+  	width: 100% !important;
+}
+
+a:hover{
+	text-decoration: none;
+}

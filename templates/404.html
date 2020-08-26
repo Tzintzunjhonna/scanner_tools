@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Igresar - ScannerTools</title>
+    	<link rel="shortcut icon" href="../static/img/icono.ico" />
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+</head>
+<body class="">
+	
+	<nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow justify-content-center">
+		<a class="sidebar-brand d-flex align-items-center justify-content-center badge badge-danger" href="{{url_for('autenticacion')}}">				
+
+            <div class="sidebar-brand-icon rotate-n-15 ">
+                <i><img src="../static/img/icono.ico" height="50"></i>
+            </div>
+            <div class="sidebar-brand-text text-white mx-3">
+                Scanner Tools
+            </div>			
+		</a>			
+
+	</nav>
+	
+	<div class="row justify-content-center ">
+		<div class="card shadow w-25 p-3 alert alert-danger">
+				<div class=" py-3 text-center">
+					{% block content %}
+						<h6 class="md font-weight-bold text-black">ERROR 404</h6>
+						<hr class="sidebar-divider">
+					{% endblock %}
+				</div>
+
+                
+		</div>
+	</div>
+
+		
+</body>
+</html>

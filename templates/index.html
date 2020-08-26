@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tools Scanner</title>
+	<link rel="shortcut icon" href="../static/img/icono.ico" />
+	<link href="../static/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+	<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+	<link href="../static/css/style1.css" rel="stylesheet">
+	<link href="../static/css/style.css" rel="stylesheet">
+
+
+</head>
+<body id="page-top">
+	
+	
+	
+	<div id="wrapper" >
+			
+			<ul class=" navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+				<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url_for('index')}}">
+					<div class="sidebar-brand-icon rotate-n-15">
+						<i><img src="../static/img/icono.ico" height="50"></i>
+					</div>
+					<div class="sidebar-brand-text mx-3">
+						Scanner Tools
+					</div>
+				</a>
+
+				<li>
+					<a class="nav-link" href="charts.html">
+						<hr class="sidebar-divider">
+					</a>
+				</li>
+
+				<div class="sidebar-heading">
+							Escaner
+				</div>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{url_for('dispositivos')}}">
+						<i class="icon ion-md-desktop"></i>
+						<span>Descubrir dispositivos</span>
+					</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{url_for('puertos')}}">
+						<i class="icon ion-md-code"></i>
+						<span>Escaneo de puertos</span>
+					</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{url_for('sistema_operativo')}}">
+						<i class="icon ion-md-bug"></i>
+						<span>Sistema operativo</span>
+					</a>
+				</li>
+
+				<hr class="sidebar-divider">
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{url_for('actividad')}}">
+						<i class="icon ion-md-stats"></i>
+					<span>Actividad</span>
+					</a>
+				</li>
+
+				
+
+				<hr class="sidebar-divider d-none d-md-block">
+
+				<div class="text-center d-none d-md-inline">
+					<button class="rounded-circle border-0" id="sidebarToggle"></button>
+				</div>
+
+			</ul>
+
+
+			<div id="content-wrapper" class="d-flex flex-column">
+				
+				<div id="content">
+					
+					<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+						
+						<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+							<i class="fa fa-bars "></i>
+						</button>
+
+						<form action="/busqueda" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+							<div class="input-group">
+								<input name="buscar" type="text" class="form-control bg-light border-0 small" placeholder="¿Quieres buscar algo?" aria-label="Search" aria-describedby="basic-addon2">
+								<div class="input-group-append">
+									<button class="btn btn-dark" type="submit">
+										<i class="fas fa-search fa-sm"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle text-success mx-auto" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									
+									<div class="sidebar-brand-icon">
+									
+										<i class="icon ion-md-contact" style="zoom:2.0;"></i>
+									</div>
+									<div class="sidebar-brand-text mx-3">
+										{{nombre}}
+										{{user}}
+									</div>
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{url_for('salir')}}">
+									<ion-icon name="log-out-outline"></ion-icon> <span></span>Cerrar sesión 
+								</a>
+								</div>
+							</li>
+							
+							</ul>
+						</div>
+
+					</nav>
+
+					 <!-- Bloque de contenido de cada página -->
+					{% block content %}
+
+
+					<div class="container-fluid">
+						
+						<div class="card shadow mb-4">
+								<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-dark">¿Qué es Scanner Tools?</h6>
+								</div>
+								<div class="card-body">
+								<p>
+									Scanner Tools es una sistematización con la libreria de Nmap que esta integrada al lenguaje de Python. Scaneer Tools permite escanear vulnerabilidades, con base a los puertos abiertos en una red de datos, permite visualizar si existen dispositivos conectados a la misma red o si hay presencia de una amenaza.
+								</p>
+								<p>
+									Estos escaneos se pueden visualizar de manera diferente, tanto en pantalla del sitio, en un arcvivo de texto plano o en un archivo PDF enviado a correo.
+								</p>
+								<a target="_blank" rel="nofollow" href="https://nmap.org/">Conoce un poco mas Nmap &rarr;</a>
+								</div>
+							</div>
+					</div>
+
+					<div class="container-fluid">
+						
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-dark">Iniciamos</h6>
+							</div>
+							<div class="card-body">
+								<p>
+									Para comenzar, inicie un analisis de su ordenador para identificar el nombre y las direcciones Ip.
+
+									<form action="/escaneo_equipo" method="POST">
+											<button type="submit" class="btn btn-success">Escanear</button>
+									</form>
+								
+								<hr>
+
+								<p class="text-danger">	
+
+									{% with messages = get_flashed_messages() %}
+									{% if messages %}
+									{% for message in messages %}
+									{{ message }} 
+									{% endfor %}
+									{% endif %}
+									{% endwith %}
+								</p>
+								
+								</p>
+								
+							</div>
+						</div>
+					</div>
+
+
+					{% endblock %}
+					
+
+				</div>
+			</div>
+	</div>
+
+
+
+	<script src="../static/vendor/jquery/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="../static/js/sb-admin-2.min.js"></script>
+
+	
+
+</body>
+</html>

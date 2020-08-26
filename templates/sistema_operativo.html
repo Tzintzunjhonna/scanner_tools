@@ -1,0 +1,62 @@
+{%  extends 'index.html' %}
+{% block content %}
+
+
+<div class="container-fluid">
+						
+	<div class="card shadow mb-4">
+		<div class="card-header py-3 bg-dark">
+			<h6 class="m-0 font-weight-bold text-white">Escaneo de puertos</h6>
+		</div>
+
+		<div class="card-body">
+
+			<form action="/escaneo_sistema" method="POST">
+
+				<div class="input-group mb-3">
+					<input required="" name="rango" type="text" class="form-control" placeholder="Ingresa la IP segun la opcion seleccionada" aria-label="Recipient's username" aria-describedby="button-addon2">
+					<div class="input-group-append">
+						<button class="btn btn-success" type="submit" id="button-addon2">Escanear</button>
+					</div>
+				</div>
+			</form>
+			
+			<hr>
+			
+			
+			{%if linux%}
+			<div class="alert alert-secondary" role="alert">
+				<p>{{linux}}<i class="icon ion-logo-tux"></i></p>
+			</div>
+			{%endif%}
+
+			{%if windows%}
+			<div class="alert alert-secondary" role="alert">
+				<p>{{windows}}<i class="icon ion-logo-windows"></i></p>
+			</div>
+			{%endif%}
+
+			{%if otro%}
+			<div class="alert alert-secondary" role="alert">
+				<p>{{otro}}<i class="icon ion-md-laptop"></i></i></p>
+			</div>
+			{%endif%}
+			
+								
+		</div>
+	</div>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-danger" role="alert">	
+						{{ message }} 
+					</div>	
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+</div>
+
+
+
+
+{% endblock %} 

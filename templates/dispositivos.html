@@ -1,0 +1,40 @@
+{%  extends 'index.html' %}
+{% block content %}
+
+
+<div class="container-fluid">
+						
+	<div class="card shadow mb-4">
+		<div class="card-header py-3 bg-dark">
+			<h6 class="m-0 font-weight-bold text-white">Escaneo de disposotivos</h6>
+		</div>
+
+		<div class="card-body">
+			
+			<form action="/escaneo_dipositivos" method="POST">
+				<div class="input-group mb-3">
+					<input required="" name="rango" type="text" class="form-control" placeholder="Ingresa una direccion IPv4 y un rango: 192.168.1.1/24 - 192.168.1.*" aria-label="Recipient's username" aria-describedby="button-addon2">
+					<div class="input-group-append">
+						<button class="btn btn-success" type="submit" id="button-addon2">Escanear</button>
+					</div>
+				</div>
+			</form>
+								
+			<hr>
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						{% for message in messages %}
+							<h6>
+								{{ message}} 
+							</h6>
+						{% endfor %}
+					{% endif %}
+				{% endwith %}				
+		</div>
+	</div>
+</div>
+
+
+
+
+{% endblock %} 
