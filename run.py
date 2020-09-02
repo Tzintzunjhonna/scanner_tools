@@ -299,7 +299,7 @@ def login():
                 
 
         except Error:
-            flas("Error con base de datos")
+            flash("Error con base de datos")
 
 # ---------------------*------------------------*----------------------*-----------
 
@@ -369,7 +369,7 @@ def escaneo_dispositivos():
         import nmap
         import time
         from datetime import date, datetime
-
+        
         correo = g.user
         hora = time.strftime("%I:%M:%S")
         fecha = date.today()
@@ -504,18 +504,17 @@ def escaneo_puertos():
                                     nombre_escaneo, str(z), correo, hora, fecha))
 
                                 con.commit()
-                                return redirect(url_for('puertos'))
+                                return render_template("puertos.html", nombre=correo)
                             except:
-                                return redirect(url_for('puertos'))
+                                return render_template("puertos.html", nombre=correo)
 
                 else:
-                    b = ("No hay puertos TCP disponibles")
                     flash("LO LAMENTAMOS")
-                    flash(b)
-                    return redirect(url_for('puertos'))
+                    flash("No hay puertos TCP disponibles")
+                    return render_template("puertos.html", nombre=correo)
             except:
                 flash("La dirección ip no se encuentra activa en la red")
-                return redirect(url_for('puertos'))
+                return render_template("puertos.html", nombre=correo)
 
         elif select == "3":
 
@@ -553,21 +552,21 @@ def escaneo_puertos():
                             nombre_escaneo, str(z), correo, hora, fecha))
 
                         con.commit()
-                        return redirect(url_for('puertos'))
+                        return render_template("puertos.html", nombre=correo)
                     except:
-                        return redirect(url_for('puertos'))
+                        return render_template("puertos.html", nombre=correo)
 
                 else:
-
-                    b = ("No hay puertos UDP disponibles")
                     flash("LO LAMENTAMOS")
-                    flash(b)
-                    return redirect(url_for('puertos'))
+                    flash("No hay puertos UDP disponibles")
+                    return render_template("puertos.html", nombre=correo)
 
             except:
                 flash("La dirección ip no se encuentra activa en la red")
-                return redirect(url_for('puertos'))
-
+                return render_template("puertos.html", nombre=correo)
+        else:
+            flash("Selecciona el tipo de puerto a escanear")
+            return render_template("puertos.html", nombre=correo)
 
 @app.route('/escaneo_sistema', methods=['POST'])
 def escaneo_sistema():
@@ -624,6 +623,7 @@ def busqueda():
 
 @app.route('/delete/<string:id>')
 def delete_contact(id):
+
     cur = sqlite3.connect("base_datos.db")
     cursor = cur.cursor()
     cursor.execute('DELETE FROM escaneo WHERE Id = {0}' .format(id))
@@ -639,13 +639,7 @@ def envio_reporte(id):
     if not g.user:
         return render_template('restriccion.html')
     else:
-        from jinja2 import Environment, FileSystemLoader
-        import pdfkit
-
         try:
-            env = Environment(loader=FileSystemLoader("templates"))
-            template = env.get_template("mensaje.html")
-
             cur = sqlite3.connect("base_datos.db")
             cursor = cur.cursor()
             cursor.execute('SELECT * FROM escaneo WHERE Id = {0}' .format(id))

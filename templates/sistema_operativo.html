@@ -14,7 +14,7 @@
 			<form action="/escaneo_sistema" method="POST">
 
 				<div class="input-group mb-3">
-					<input required="" name="rango" type="text" class="form-control" placeholder="Ingresa la IP segun la opcion seleccionada" aria-label="Recipient's username" aria-describedby="button-addon2">
+					<input id="campo" required="" name="rango" type="text" class="form-control" placeholder="Ingresa la IP segun la opcion seleccionada" aria-label="Recipient's username" aria-describedby="button-addon2">
 					<div class="input-group-append">
 						<button class="btn btn-success" type="submit" id="button-addon2">Escanear</button>
 					</div>
@@ -55,6 +55,61 @@
 			{% endif %}
 		{% endwith %}
 </div>
+
+
+<style type="text/css">
+	.hidden{
+		display:none;
+
+	}
+</style>
+
+<div class="progress">
+  <div id="barra" class="hidden progress-bar progress-bar-striped bg-dark" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+</div>
+
+
+<div class="row justify-content-center">
+	<div class=" py-3 text-center">
+		<h6 id="mensaje" class="alert-heading"></h6>
+	</div>
+</div>
+
+
+<script>
+	function mostrar(){
+		document.getElementById('barra').style.display = 'block';
+	}
+
+	document.getElementById("button-addon2").onclick = function (){
+		mostrar();
+	}
+</script>
+
+
+<script type="text/javascript">
+	var campo = document.getElementById('campo')
+	function animar (){
+		let direccion = campo.value;
+
+		document.getElementById("barra").classList.toggle ("progress-bar-animated");
+		document.getElementById("barra").style.display = 'block';
+		document.getElementById("mensaje").innerHTML = "El escaneo se esta ejecutando en la dirección "+ direccion +", espera un poco.";
+
+	}
+
+	document.getElementById("button-addon2").onclick = function (){
+		if(campo.value === null || campo.value === ''){
+
+		}else{
+			animar();
+		}
+		
+	}
+
+	
+
+	</script>
 
 
 

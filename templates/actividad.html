@@ -32,49 +32,8 @@
 			<td>{{ contact.3 }}</td>
 			<td>{{ contact.4 }}</td>
 			<td>{{ contact.5 }}</td>
-			<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#mensajealerta"><i class="icon ion-md-trash"></i></button></td>
-
-			<div class="modal fade w-25 p-3 float-right" id="mensajealerta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-					<div class="modal-header alert alert-danger">
-						<h5 class="modal-title" id="exampleModalLabel">A L E R T A</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						¿Desea continuar? Este escaneo no se podra recuperar.
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-						<a href="/delete/{{contact.0}}" class="btn btn-danger" role="button">Eliminar</a>
-					</div>
-					</div>
-				</div>
-
-			<td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#mensajealerta2"><i class="icon ion-md-mail"></i></button></td>
-
-			<div class="modal fade w-25 p-3 float-right" id="mensajealerta2" tabindex="-1" role="dialog" aria-labelledby="mensajealertalabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-					<div class="modal-header alert alert-danger">
-						<h5 class="modal-title" id="mensajealertalabel">A L E R T A</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						Se enviara un reporte de escaneo al correo {{nombre}}. 
-						¿Desea continuar? 
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-						<a href="/envio_reporte/{{contact.0}}" class="btn btn-success" role="button">Enviar</a>
-					</div>
-					</div>
-				</div>
-				
+		    <td> <a href="/delete/{{contact.0}}" class="btn btn-danger btn-delete" role="button"><i class="icon ion-md-trash"></i></a></td>
+			<td> <a href="/envio_reporte/{{contact.0}}" class="btn btn-success btn-enviar" role="button"><i class="icon ion-md-mail"></i></a></td>
 		</tr>
 	{% endif %}
 {% endfor %}
